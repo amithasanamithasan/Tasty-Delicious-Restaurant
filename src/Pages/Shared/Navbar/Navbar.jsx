@@ -16,7 +16,7 @@ const Navbar = () => {
 
     return (
         <div>
-        <div className="navbar ">
+        <div className="navbar fixed z-10 bg-opacity-30 bg-black max-w-screen-xl mx-auto ">
    <div className="navbar-start">
      <div className="dropdown">
        <div tabIndex={0} role="button" className="btn bg-slate-300 lg:hidden">
@@ -33,11 +33,11 @@ const Navbar = () => {
      
      <Link to="/">
  
-   <img className="w-[90px] " src={logo1} alt=""></img></Link> 
+   <img className="w-[90px] avatar rounded-r-full" src={logo1} alt=""></img></Link> 
    </div> 
    
    <div className="navbar-center hidden lg:flex">
-     <ul className="menu menu-horizontal px-1 font-semibold text-rose-800">
+     <ul className="menu menu-horizontal px-1 font-semibold text-violet-800">
      {navlink}
      </ul>
    </div>
