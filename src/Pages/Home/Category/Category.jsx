@@ -10,14 +10,22 @@ import cat2 from"../../../assets/home/slide2.jpg"
 import cat3 from"../../../assets/home/slide3.jpg"
 import cat4 from"../../../assets/home/slide4.jpg"
 import cat5 from"../../../assets/home/slide5.jpg"
+import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
 
 
 const Category = () => {
     return (
-        <Swiper
+     <section>
+      <SectionTitle       
+      subHeading={"From 11am to 10pm"}
+      heading={"Order online"}
+      >
+
+      </SectionTitle>
+         <Swiper
         slidesPerView={1}
-        spaceBetween={10}
+        spaceBetween={5}
         pagination={{
           clickable: true,
         }}
@@ -64,6 +72,7 @@ const Category = () => {
         </SwiperSlide>
    
       </Swiper>
+     </section>
     );
 };
 
