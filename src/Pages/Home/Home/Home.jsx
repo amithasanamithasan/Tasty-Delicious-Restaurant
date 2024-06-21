@@ -17,7 +17,7 @@ const Home = () => {
            <Category2></Category2>
            <PopulerMenu></PopulerMenu>
            <Fetaured></Fetaured>
-           <Testimonials></Testimonials>
+          <Testimonials></Testimonials>
         </div>
     );
 };
