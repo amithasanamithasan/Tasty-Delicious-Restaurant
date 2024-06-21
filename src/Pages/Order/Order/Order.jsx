@@ -4,16 +4,24 @@ import Cover from '../../Shared/Cover/Cover';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import useMenu from '../../../Hooks/useMenu';
-import Foodcard from '../../../Components/FoodCard/Foodcard';
+
 import Ordertab from '../OrderTab/Ordertab';
+import { useParams } from 'react-router-dom';
 const Order = () => {
-  const[tabIndex ,setTabIndex]=useState()
-  const [menu]=useMenu()
+  const categories=['salad ', 'pizza', 'soup', 'dessert','drink'];
+  const { category } = useParams();
+  const initialIndex = categories.indexOf(category) !== -1 ? categories.indexOf(category) : 0;
+  const [tabIndex, setTabIndex] = useState(initialIndex);
+
+  const [menu]=useMenu();
+
+  console.log(category);
+
   const desserts= menu.filter(item=>item.category==='dessert');
   const pizzas= menu.filter(item=>item.category==='pizza');
   const salads= menu.filter(item=>item.category==='salad');
   const soups= menu.filter(item=>item.category==='soup');
-  const offereds= menu.filter(item=>item.category==='offered');
+  const drinks= menu.filter(item=>item.category==='drinks');
     return (
       
         <div>
@@ -32,27 +40,18 @@ const Order = () => {
  <Ordertab items={salads}></Ordertab>
   </TabPanel>
   <TabPanel>
-<div  className='grid md:grid-cols-3 gap-10 p-4'>
-{
-      pizzas.map(item=> <Foodcard key={item._id} item={item}></Foodcard>)
-    }
-</div>
+  <Ordertab items={pizzas}></Ordertab>
   </TabPanel>
   <TabPanel>
- <div  className='grid md:grid-cols-3 gap-10 p-4'>
- {
-      soups.map(item=> <Foodcard key={item._id} item={item}></Foodcard>)
-    }
- </div>
+  <Ordertab items={soups}></Ordertab>
+
   </TabPanel>
   <TabPanel>
-<div  className='grid md:grid-cols-3 gap-10 p-4'>
-{
-     desserts.map(item=> <Foodcard key={item._id} item={item}></Foodcard>)
-    }
-</div>
+<Ordertab items={desserts}></Ordertab>
   </TabPanel>
-  <TabPanel></TabPanel>
+  <TabPanel>
+    <Ordertab items={drinks}></Ordertab>
+  </TabPanel>
   
 </Tabs>
            </div>
