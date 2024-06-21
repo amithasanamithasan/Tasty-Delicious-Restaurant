@@ -28,6 +28,10 @@ fetch('menu.json')
                         item={item}
                     />
                 ))}
+              
+            </div>
+            <div className="flex justify-center mt-4">
+                <button className="btn btn-outline border-0 border-b-4">View All Menu</button>
             </div>
       </section>
     );
