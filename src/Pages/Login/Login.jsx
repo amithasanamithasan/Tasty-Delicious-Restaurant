@@ -1,10 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
+import { AuthContext } from '../../Providers/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Login = () => {
-const chapthaRef=useRef()
+
+const {singIn} =useContext(AuthContext)
 const [disabled ,setDisable]=useState(true);
 
     const handelLogin=event=>{
@@ -14,13 +17,36 @@ const [disabled ,setDisable]=useState(true);
         const email =form.email.value;
         const password=form.password.value;
         console.log(email,password);
+        singIn(email,password)
+        .then(result=>{
+        const user =result.user;
+        console.log(user)
+        Swal.fire({
+          title: "User login successfully",
+          showClass: {
+            popup: `
+              animate__animated
+              animate__fadeInUp
+              animate__faster
+            `
+          },
+          hideClass: {
+            popup: `
+              animate__animated
+              animate__fadeOutDown
+              animate__faster
+            `
+          }
+        });
+        })
+
     }
     useEffect(()=>{
       loadCaptchaEnginge(6); 
     },[])
 
-    const handalevalidate=()=>{
-      const user_captcha_value =chapthaRef.current.value
+    const handalevalidate=(e)=>{
+      const user_captcha_value =e.target.value
  
       if (validateCaptcha(user_captcha_value)) {
      
@@ -63,8 +89,8 @@ const [disabled ,setDisable]=useState(true);
                 <label className="label">
                 <LoadCanvasTemplate />
                 </label>
-                <input type="text" ref={chapthaRef} name="chaptha"  className="input input-bordered" placeholder="Enter type text avobe"required />
-                <button onClick={handalevalidate} className="  btn-xs btn btn-outline mt-2">Validate</button>
+                <input  onBlur={handalevalidate} type="text" name="chaptha"  className="input input-bordered" placeholder="Enter type text avobe"required />
+                
               </div>
               <div className="form-control mt-6">
                 <input  disabled={disabled}  className="btn btn-primary" type="submit" value="Login"></input>
