@@ -1,14 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Login = () => {
+  const [disabled ,setDisable]=useState(true);
+const {singIn} =useContext(AuthContext);
+const navigate=useNavigate();
+const location =useLocation();
 
-const {singIn} =useContext(AuthContext)
-const [disabled ,setDisable]=useState(true);
+const from=location.state?.from?.pathname || "/";
 
     const handelLogin=event=>{
 
@@ -38,6 +41,8 @@ const [disabled ,setDisable]=useState(true);
             `
           }
         });
+
+        navigate(from,{replace:true});
         })
 
     }

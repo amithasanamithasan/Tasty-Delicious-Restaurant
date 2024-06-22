@@ -7,6 +7,8 @@ import OurMenu from "../Pages/Menu/OurMenu/OurMenu";
 import Order from "../Pages/Order/Order/Order";
 import Login from "../Pages/Login/Login";
 import Singup from "../Signup/Singup";
+import PrivetRouts from "./PrivetRouts";
+import Secret from "../Pages/Shared/Secret/Secret";
 
 
 
@@ -35,6 +37,10 @@ import Singup from "../Signup/Singup";
         {
           path:'singup',
           element:<Singup></Singup>,
+        },
+        {
+          path:'secret',
+          element:<PrivetRouts><Secret></Secret></PrivetRouts>
         }
       ]
     },
