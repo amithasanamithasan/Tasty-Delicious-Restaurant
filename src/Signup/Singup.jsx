@@ -1,14 +1,17 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const Singup = () => {
-  const {register,handleSubmit,formState: { errors },} = useForm();
+  const {register,handleSubmit, reset,formState: { errors },} = useForm();
 
-  const{createuser}=useContext(AuthContext);
+  const{createuser , UserupdateProfile}=useContext(AuthContext);
+
+  const navigate=useNavigate();
 
   const onSubmit = data => {
     console.log(data);
@@ -16,6 +19,22 @@ const Singup = () => {
     .then(result=>{
       const loggeduser=result.user;
       console.log(loggeduser);
+      UserupdateProfile(data.name,data.photoURL)
+      .then(()=>{
+    console.log('User profile info update');
+      })
+      .catch(error=>{
+        console.log(error);
+        reset();
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Created user successfully",
+          showConfirmButton: false,
+          timer: 1500
+        });
+   navigate('/');
+      })
     })
   };
 
@@ -38,6 +57,13 @@ const Singup = () => {
                 </label>
                 <input type="text" name="name"  {...register("name",{ required: true,maxLength: 20  })}  placeholder="Enter your name" className="input input-bordered"  />
                 {errors.name && <span className="text-red-600">This name field is required</span>}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input type="text"   {...register("photoURL",{ required: true  })}  placeholder="Photo URL" className="input input-bordered"  />
+                {errors.photoURL && <span className="text-red-600">Photo URL is required</span>}
               </div>
               <div className="form-control">
                 <label className="label">
