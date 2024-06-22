@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
 
@@ -31,6 +32,10 @@ const [disabled ,setDisable]=useState(true);
     }
     }
     return (
+      <>
+             <Helmet>
+                <title>Testy_deliciouse|Log_In</title>
+            </Helmet>
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
           <div className="text-center md:w-1/2 lg:text-left">
@@ -69,6 +74,7 @@ const [disabled ,setDisable]=useState(true);
           </div>
         </div>
       </div>
+      </>
     );
 };
 
