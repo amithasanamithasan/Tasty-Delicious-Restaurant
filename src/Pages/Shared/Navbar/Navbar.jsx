@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import logo1 from"../../../assets/logo1.jpg"
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
-
+import { TiShoppingCart } from "react-icons/ti";
 
 
 
@@ -24,10 +24,15 @@ const Navbar = () => {
     <li><Link to="/ourmenu">Our Menu</Link></li>
     <li><Link to="/secret">Secret</Link></li>
    
-   
+    <li>
+      <Link to="/"><button className="btn">
+      <TiShoppingCart  className="mr-2"/>
+  <div className="badge badge-secondary">+0</div>
+</button></Link>
+      </li>
    { 
    user? <>
-   <span>{user?.displayName}</span>
+   {/* <span>{user?.displayName}</span> */}
    <button onClick={handelLogout} className="btn btn-ghost">LogOut</button>
    </>
    :
