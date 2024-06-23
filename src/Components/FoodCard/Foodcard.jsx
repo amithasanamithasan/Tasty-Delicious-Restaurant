@@ -1,15 +1,44 @@
 import Swal from "sweetalert2";
 import useAuth from "../../Hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 
 const Foodcard = ({item}) => {
-    const {name,image,price,recipe}=item;
+    const {name,image,price,recipe,_id}=item;
     const{user}=useAuth();
+    const location =useLocation();
     const navigate=useNavigate();
+   
     const handleAddToCart=food=>{
-    if(user&&user.email){
+
+    if(user && user.email){
       //to  send cart item to the database
+      console.log(user.email ,food);
+      const CartItem ={
+        menueId:_id,
+        email:user.email,
+        name ,
+        image,
+        price
+        
+      }
+      axios.post('http://localhost:5000/carts',CartItem)
+.then(res=>{
+  console.log(res.data)
+  if(res.data.insertedId  ){
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: `${name} cart added successfully`,
+      showConfirmButton: false,
+      timer: 1500
+    });
+
+  }
+})
+
+
     }
     else{
       Swal.fire({
@@ -23,13 +52,9 @@ const Foodcard = ({item}) => {
       }).then((result) => {
         if (result.isConfirmed) {
           // send user to the login page
-          navigate('/login')
+          navigate('/login',{state:{from:location}})
 
-          // Swal.fire({
-          //   title: "Deleted!",
-          //   text: "Your file has been deleted.",
-          //   icon: "success"
-          // });
+         
         }
       });
     }

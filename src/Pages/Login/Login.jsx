@@ -12,7 +12,7 @@ const navigate=useNavigate();
 const location =useLocation();
 
 const from=location.state?.from?.pathname || "/";
-
+console.log('state in the location login page ',location.state)
     const handelLogin=event=>{
 
         event.preventDefault();
@@ -98,7 +98,7 @@ const from=location.state?.from?.pathname || "/";
                 
               </div>
               <div className="form-control mt-6">
-                <input  disabled={disabled}  className="btn btn-primary" type="submit" value="Login"></input>
+                <input  disabled={false}  className="btn btn-primary" type="submit" value="Login"></input>
               </div>
             </form>
             <p><small>New here? <Link to="/singup">Create an account</Link></small></p>
