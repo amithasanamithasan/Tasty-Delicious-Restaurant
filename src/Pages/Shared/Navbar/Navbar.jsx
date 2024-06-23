@@ -3,11 +3,13 @@ import logo1 from"../../../assets/logo1.jpg"
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { TiShoppingCart } from "react-icons/ti";
+import useCart from "../../../Hooks/useCart";
 
 
 
 const Navbar = () => {
   const{user,logOut }=useContext(AuthContext)
+  const[cart]=useCart()
   const handelLogout=()=>{
     logOut()
     .then(()=>{})
@@ -27,7 +29,7 @@ const Navbar = () => {
     <li>
       <Link to="/"><button className="btn">
       <TiShoppingCart  className="mr-2"/>
-  <div className="badge badge-secondary">+0</div>
+  <div className="badge badge-secondary">+{cart.length}</div>
 </button></Link>
       </li>
    { 
