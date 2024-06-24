@@ -19,11 +19,6 @@ const Cart = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-            //   Swal.fire({
-            //     title: "Deleted!",
-            //     text: "Your file has been deleted.",
-            //     icon: "success"
-            //   });
              axiosSecure.delete(`/carts/${id}`)
              .then(res=>{
                 if(res.data.dletetedCount>0){
