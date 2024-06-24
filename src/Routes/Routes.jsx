@@ -9,6 +9,8 @@ import Login from "../Pages/Login/Login";
 import Singup from "../Signup/Singup";
 import PrivetRouts from "./PrivetRouts";
 import Secret from "../Pages/Shared/Secret/Secret";
+import Dashboard from "../Layout/Dashboard";
+import Cart from "../Pages/Dashboard/Cart/Cart";
 
 
 
@@ -44,4 +46,14 @@ import Secret from "../Pages/Shared/Secret/Secret";
         }
       ]
     },
+    {
+      path:"dashboard",
+      element:<Dashboard></Dashboard>,
+      children:[
+        {
+          path:'cart',
+          element:<Cart></Cart>,
+        }
+      ]
+    }
   ]);
