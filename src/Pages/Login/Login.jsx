@@ -5,6 +5,8 @@ import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
 
+import SocialLogin from '../../Components/SocialLOgin/SocialLogin';
+
 const Login = () => {
   const [disabled ,setDisable]=useState(true);
 const {singIn} =useContext(AuthContext);
@@ -100,8 +102,10 @@ console.log('state in the location login page ',location.state)
               <div className="form-control mt-6">
                 <input  disabled={false}  className="btn btn-primary" type="submit" value="Login"></input>
               </div>
+              <div className="divider">OR</div>
+           <SocialLogin></SocialLogin>
             </form>
-            <p><small>New here? <Link to="/singup">Create an account</Link></small></p>
+            <p className='text-center'><small>New here? <Link to="/singup">Create an account</Link></small></p>
           </div>
         </div>
       </div>
