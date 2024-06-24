@@ -1,4 +1,5 @@
-import { FaAd, FaCalendar, FaHome, FaList, FaShoppingCart } from "react-icons/fa";
+import { FaAd, FaCalendar, FaHome, FaList, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+import { MdContactPhone, MdOutlineMenuBook } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 
 
@@ -34,12 +35,37 @@ const Dashboard = () => {
                    <FaList className="text-2xl"></FaList>
                   My Bookings</NavLink>
                    </li>
+      <div className="divider"></div>
+<li>
+<NavLink to ="/">                  
+<FaHome className="text-2xl"></FaHome>
+Home</NavLink>
+</li>
+
+<li>
+<NavLink to ="/order/salad">                  
+<MdOutlineMenuBook className="text-2xl" />
+Menu</NavLink>
+</li>
+<li>
+<NavLink to ="/Shop">                  
+<FaShoppingBag className="text-2xl" />
+Shop</NavLink>
+
+</li>
+<li>
+<NavLink to ="/contact">                  
+<MdContactPhone className="text-2xl" />
+ontact</NavLink>
+
+</li>
 
                 </ul>
 
             </div>
+        
             {/* dashboard content */}
-            <div className="felx-1">
+            <div className="felx-1 p-8">
                 <Outlet></Outlet>
             </div>
         </div>
