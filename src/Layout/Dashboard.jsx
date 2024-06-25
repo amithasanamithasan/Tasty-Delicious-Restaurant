@@ -1,4 +1,4 @@
-import { FaAd, FaCalendar, FaHome, FaList, FaShoppingBag, FaShoppingCart } from "react-icons/fa";
+import { FaAd, FaBook, FaCalendar, FaHome, FaList, FaShoppingBag, FaShoppingCart, FaUser, FaUtensilSpoon, FaUtensils } from "react-icons/fa";
 import { MdContactPhone, MdOutlineMenuBook } from "react-icons/md";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../Hooks/useCart";
@@ -6,12 +6,47 @@ import useCart from "../Hooks/useCart";
 
 const Dashboard = () => {
     const [cart]=useCart();
+    // TODO: get  isAdmin Value from the database 
+    const isAdmin=true;
     return (
         <div className="flex">
             {/* dashboard side bar */}
             <div className="w-64 min-h-screen bg-orange-600">
                 <ul className="menu p-4">
-                <li>
+                    {/* Condition  jodi admin ture mane admin jodi thake thakhole admin dashboard
+                     dekhaba na hoel user dashboard dekhabe */}
+                    {
+                        isAdmin? <>
+                              <li>
+                    <NavLink to ="/dashboard/adminHome">                  
+                   <FaHome className="text-2xl"></FaHome>
+                   Admin Home</NavLink>
+                   </li>
+                  
+                 <li>
+                    <NavLink to ="/dashboard/addItems ">                  
+                   <FaUtensils className="text-2xl"></FaUtensils>
+                   Add Items</NavLink>
+                   </li>
+                 <li>
+                    <NavLink to ="/dashboard/cart ">                  
+                   <FaBook className="text-2xl"></FaBook>
+                   Manage Bookings</NavLink>
+                   </li>
+                   <li>
+                    <NavLink to ="/dashboard/users">                  
+                   <FaUser  className="text-2xl"></FaUser>
+                   All Users</NavLink>
+                   </li>
+                   <li>
+                    <NavLink to ="/dashboard/mybookings">                  
+                   <FaBook className="text-2xl"></FaBook>
+                  My Bookings</NavLink>
+                   </li>
+                        </>
+                        :
+                        <>
+                              <li>
                     <NavLink to ="/dashboard/userhome">                  
                    <FaHome className="text-2xl"></FaHome>
                    UserHome</NavLink>
@@ -37,6 +72,10 @@ const Dashboard = () => {
                    <FaList className="text-2xl"></FaList>
                   My Bookings</NavLink>
                    </li>
+                        </>
+                    }
+          
+                   {/* sheard nav links */}
       <div className="divider"></div>
 <li>
 <NavLink to ="/">                  
