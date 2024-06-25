@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
+import SocialLogin from "../Components/SocialLOgin/SocialLogin";
 
 
 const Singup = () => {
@@ -110,11 +111,13 @@ navigate('/');
               <input   className="btn btn-primary" type="submit" value="Sign up"></input>
                 
               </div>
+              <div className="divider divider-success">OR</div>
+              <SocialLogin></SocialLogin>
             </form>
-            <p> <small> Already register<Link to='/login'> Got to Log_In</Link></small></p>
+            <p className="text-center text-green-500 font-bold text-2xl"> <small> Already register<Link to='/login' className="underline"> Got to Log_In</Link></small></p>
           </div>
         </div>
-      </div>
+      </div> 
       </>
     );
 };
