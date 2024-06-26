@@ -12,6 +12,8 @@ import Secret from "../Pages/Shared/Secret/Secret";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddItems from "../Pages/Dashboard/AddItemsAdmin/AddItems";
+import AdminRouts from "./AdminRouts";
 
 
 
@@ -56,8 +58,13 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
           element:<Cart></Cart>,
         },
         {
+          path:'addItems',
+          element:<AdminRouts><AddItems></AddItems></AdminRouts>
+
+        },
+        {
           path:'users',
-        element:<AllUsers></AllUsers>
+        element:<AdminRouts><AllUsers></AllUsers></AdminRouts>
         }
 
       ]

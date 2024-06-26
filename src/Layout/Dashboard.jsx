@@ -25,12 +25,12 @@ const Dashboard = () => {
                    </li>
                   
                  <li>
-                    <NavLink to ="/dashboard/addItems ">                  
+                    <NavLink to ="/dashboard/addItems">                  
                    <FaUtensils className="text-2xl"></FaUtensils>
                    Add Items</NavLink>
                    </li>
                  <li>
-                    <NavLink to ="/dashboard/cart ">                  
+                    <NavLink to ="/dashboard/cart">                  
                    <FaBook className="text-2xl"></FaBook>
                    Manage Bookings</NavLink>
                    </li>
