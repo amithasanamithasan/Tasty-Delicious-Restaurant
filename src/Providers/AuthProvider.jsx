@@ -50,7 +50,13 @@ return  updateProfile (auth.currentUser, {
 useEffect(()=>{
  const unsubcribe = onAuthStateChanged(auth,currentUser=>{
     setUser(currentUser);
-    console.log('current User',currentUser);
+    // console.log('current User',currentUser);
+    if(currentUser){
+
+    }
+    else{
+
+    }
     setLoading(false);
 })
 return () =>{

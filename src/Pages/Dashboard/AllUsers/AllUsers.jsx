@@ -14,6 +14,24 @@ const axiosSecure= useAxiosSecure();
 }
       })
 
+      const handeldelMakeAdmin=user=>{
+        axiosSecure.patch(`/users/admin/${user._id}`)
+        .then(res=>{
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                refetch();
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user.name} is an Admin Now`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+           
+        })
+      }
+
       const handeldeleteduser=user=>{
         Swal.fire({
             title: "Are you sure?",
@@ -65,13 +83,19 @@ const axiosSecure= useAxiosSecure();
         <th className="px-4 py-2 border-b text-black font-bold">{index +1}</th>
         <td className="px-4 py-2 border-b text-black font-bold">{user.name}</td>
         <td className="px-4 py-2 border-b text-black font-bold">{user.email}</td>
-        <td>  <button  
-        onClick={()=>handeldelMakeAdmin(user)} 
-        className="bg-orange-500
-         text-white p-2  rounded">
-                            
-        <FaUsers className="text-2xl"/>
-        </button></td>
+       
+        <td>  
+            {/* user er role ta jdi admin hoi tahole tumi admin dekhaba 
+            na hole take Admin korar button ta dekhaba*/}
+    { user.role ==='admin'?'Admin': <button  
+onClick={()=>handeldelMakeAdmin(user)} 
+className="bg-orange-500
+    text-white p-2  rounded">
+                    
+<FaUsers className="text-2xl"/>
+</button>}
+        </td>
+
         <td>
             {/* */}
         <button  

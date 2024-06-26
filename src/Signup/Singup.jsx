@@ -22,19 +22,22 @@ const axiosPublic=useAxiosPublic();
     createuser(data.email ,data.password)
     .then(result=>{
       const loggeduser=result.user;
+      
       console.log(loggeduser);
+
       UserupdateProfile(data.name,data.photoURL)
       .then(()=>{
     // console.log('User profile info update');
     // create user entry in the data base
-  const userInfo={
-    name:data.name,
-    email:data.email
-  }
+    const userInfo = {
+      name: data.name,
+      email: data.email,
+      photoURL: data.photoURL // Include photo URL in user info
+    };
 axiosPublic.post('/users',userInfo)
 .then(res=>{
   console.log('user info',res);
-  if(res.data.insertedId){
+  if (res.data.insertedId){
     console.log('user added the database');
     reset();
     Swal.fire({
@@ -46,11 +49,24 @@ axiosPublic.post('/users',userInfo)
     });
 navigate('/');
   }
+
+
+  else {
+    Swal.fire({
+      position: "top-end",
+      icon: "error",
+      title: "User already exists",
+      showConfirmButton: false,
+      timer: 1500
+    });
+  }
+
 })
 .catch(error=>console.log(error))
-})
+});
      
 })
+.catch(error => console.error(error));
   };
 
     return (

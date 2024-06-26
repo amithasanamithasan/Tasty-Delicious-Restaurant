@@ -6,16 +6,20 @@ import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
     const{googleSignIn}=useAuth();
-    const axiosPublic=useAxiosPublic()
+    const axiosPublic=useAxiosPublic();
     const navigate=useNavigate();
+
+
     const handelgooglesginin=()=>{
-googleSignIn()
+
+    googleSignIn()
+
 .then(result=>{
     console.log(result.user);
     // user social login user existing or not
     const userInfo={
         email: result.user?.email,
-        displayname:result.user.displayName
+        name:result.user?.displayName
     }
     axiosPublic.post ('/users',userInfo)
     .then(res=>{
