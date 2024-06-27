@@ -38,7 +38,7 @@ const UpdateItems = () => {
           }
           const menures=await axiosSecure.patch(`/menu/${_id}`,menuItem);
           console.log(menures.data);
-          // if(menures.data.insertedId){
+           if(menures.data.modifiedCount > 0){
             Swal.fire({
               title: "Sweet!",
               text: `${data.name} Is Updated To The Menu`,
@@ -49,7 +49,7 @@ const UpdateItems = () => {
           });
           
            
-        // }
+         }
          
         }
         console.log('with image url',res.data); 
