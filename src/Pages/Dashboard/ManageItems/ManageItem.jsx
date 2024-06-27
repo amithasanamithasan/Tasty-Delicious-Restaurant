@@ -4,6 +4,8 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import useMenu from "../../../Hooks/useMenu";
+import { Link } from "react-router-dom";
+
 
 
 const ManageItem = () => {
@@ -13,7 +15,7 @@ const ManageItem = () => {
     const handelAdminmanageDelete= async (item) =>{
         Swal.fire({
             title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            text:  `${item.name} has been deleted`,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -21,13 +23,12 @@ const ManageItem = () => {
             confirmButtonText: "Yes, delete it!"
           }).then( async(result) => {
             if (result.isConfirmed) {
-                try {
+               
       const res= await axiosSecure.delete(`/menu/${item._id}`);
-
-            //  console.log(res.data);
-             if(res.data.deletedCount > 0){
+                    refetch();
+              console.log(res.data);
+              if(res.data.deletedCount > 0){
                 // refetch update to the ui
-                await refetch();
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -37,11 +38,9 @@ const ManageItem = () => {
                  });
                 
                            
-                    }
+                     }
            
-            }catch (error) {
-                console.error("Error deleting item:", error);
-             }
+           
              }
           });
     };
@@ -80,10 +79,13 @@ const ManageItem = () => {
                             <td className="px-4 py-2 border-b text-white">{item.name}</td>
                             <td className="px-4 py-2 border-b text-white">${item.price}</td>
                             <td className="px-4 py-2 border-b">
-                                <button  className="bg-yellow-500 text-white p-2 rounded">
-                            
-                                <FaEdit />
-                                </button>
+                               {/* updateItems admin  */}
+                               <Link to={`/dashboard/updateItems/${item._id}`}> 
+                               <button  className="bg-yellow-500 text-white p-2 rounded">
+                               <FaEdit />
+                            </button>
+                            </Link>
+
                             </td>
                             <td className="px-4 py-2 border-b">
                                 <button onClick={()=>handelAdminmanageDelete(item)} className="bg-red-500 text-white p-2 rounded">

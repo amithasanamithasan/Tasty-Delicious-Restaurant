@@ -33,19 +33,19 @@ const AddItems = () => {
           }
           const menures=await axiosSecure.post('/menu',menuItem);
           console.log(menures.data);
-          if(menures.data.insertedId){
+          // if(menures.data.insertedId){
             Swal.fire({
               title: "Sweet!",
               text: `${data.name} is added to the menu`,
               imageUrl: res.data.data.display_url,
               imageWidth: 400,
               imageHeight: 200,
-              imageAlt: "Custom image"
+              imageAlt:  "Custom image"
           });
             reset();
            
-
-          }
+        // }
+         
         }
         console.log('with image url',res.data); 
       };

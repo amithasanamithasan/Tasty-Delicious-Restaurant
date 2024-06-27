@@ -15,6 +15,7 @@ import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddItems from "../Pages/Dashboard/AddItemsAdmin/AddItems";
 import AdminRouts from "./AdminRouts";
 import ManageItem from "../Pages/Dashboard/ManageItems/ManageItem";
+import UpdateItems from "../Pages/Dashboard/UpdateItems/UpdateItems";
 
 
 
@@ -54,22 +55,30 @@ import ManageItem from "../Pages/Dashboard/ManageItems/ManageItem";
       path:"dashboard",
       element:<PrivetRouts><Dashboard></Dashboard></PrivetRouts>,
       children:[
+        // normal users routes
         {
           path:'cart',
           element:<Cart></Cart>,
         },
+        // admin only routes
         {
           path:'addItems',
-          element:<AdminRouts><AddItems></AddItems></AdminRouts>
+          element:<AdminRouts><AddItems></AddItems></AdminRouts>,
 
         },
         {
           path:'manageItems',
-          element:<ManageItem></ManageItem>
+          element:<AdminRouts><ManageItem></ManageItem></AdminRouts>,
+        },
+        {
+          path:'updateItems/:id',
+          element:<AdminRouts><UpdateItems></UpdateItems></AdminRouts>,
+          loader:({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
         },
         {
           path:'allUsers',
-        element:<AdminRouts><AllUsers></AllUsers></AdminRouts>
+        element:<AdminRouts><AllUsers></AllUsers></AdminRouts>,
+      
         }
 
       ]
