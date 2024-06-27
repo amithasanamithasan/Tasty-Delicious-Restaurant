@@ -40,7 +40,7 @@ const AddItems = () => {
               imageUrl: res.data.data.display_url,
               imageWidth: 400,
               imageHeight: 200,
-              imageAlt: data.name
+              imageAlt: "Custom image"
           });
             reset();
            

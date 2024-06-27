@@ -14,6 +14,7 @@ import Cart from "../Pages/Dashboard/Cart/Cart";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddItems from "../Pages/Dashboard/AddItemsAdmin/AddItems";
 import AdminRouts from "./AdminRouts";
+import ManageItem from "../Pages/Dashboard/ManageItems/ManageItem";
 
 
 
@@ -63,7 +64,11 @@ import AdminRouts from "./AdminRouts";
 
         },
         {
-          path:'users',
+          path:'manageItems',
+          element:<ManageItem></ManageItem>
+        },
+        {
+          path:'allUsers',
         element:<AdminRouts><AllUsers></AllUsers></AdminRouts>
         }
 

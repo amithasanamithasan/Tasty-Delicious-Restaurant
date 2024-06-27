@@ -30,12 +30,12 @@ const Dashboard = () => {
                    Add Items</NavLink>
                    </li>
                  <li>
-                    <NavLink to ="/dashboard/cart">                  
+                    <NavLink to ="/dashboard/manageItems">                  
                    <FaBook className="text-2xl"></FaBook>
-                   Manage Bookings</NavLink>
+                   MANAGE ITEMS</NavLink>
                    </li>
                    <li>
-                    <NavLink to ="/dashboard/users">                  
+                    <NavLink to ="/dashboard/allUsers">                  
                    <FaUser  className="text-2xl"></FaUser>
                    All Users</NavLink>
                    </li>
