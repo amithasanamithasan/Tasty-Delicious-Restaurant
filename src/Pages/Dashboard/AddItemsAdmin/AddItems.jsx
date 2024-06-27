@@ -3,12 +3,15 @@ import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const imagebb_hosting_key=import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const imagebb_hosting_api=`https://api.imgbb.com/1/upload?key=${imagebb_hosting_key}`;
 const AddItems = () => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
     const axiosPublic=useAxiosPublic();
+    const axiosSecure=useAxiosSecure()
     const onSubmit = async(data) =>{ 
         
         console.log(data)
@@ -20,12 +23,37 @@ const AddItems = () => {
           }
           
         });
-        console.log(res.data); 
+        if(res.data.success){
+          const menuItem={
+            name:data.name,
+           category:data.category,
+           price:parseFloat(data.price),
+           recipe:data.recipe,
+           image:res.data.data.display_url
+          }
+          const menures=await axiosSecure.post('/menu',menuItem);
+          console.log(menures.data);
+          if(menures.data.insertedId){
+            Swal.fire({
+              title: "Sweet!",
+              text: `${data.name} is added to the menu`,
+              imageUrl: res.data.data.display_url,
+              imageWidth: 400,
+              imageHeight: 200,
+              imageAlt: data.name
+          });
+            reset();
+           
+
+          }
+        }
+        console.log('with image url',res.data); 
       };
     return (
         <div>
-          <SectionTitle heading="ADD AN ITEMS" subHeading="Whats NEW"></SectionTitle>
-          <div>
+          <SectionTitle   heading="ADD AN ITEMS" subHeading="Whats NEW"></SectionTitle>
+         
+         <div>
             
 
 <form  onSubmit={handleSubmit(onSubmit)}  className="max-w-md mx-auto">
@@ -46,7 +74,7 @@ const AddItems = () => {
   <div className="grid md:grid-cols-2 md:gap-6">
  <div className="relative z-0 w-full mb-5 group ">
  <label  className="font-bold absolute text-2xl font-mono  text-black-500 dark:text-gray-400
-     duration-300 transform -translate-y-10 scale-75 -top-0 -z-10 origin-[0] peer-focus:start-0 
+     duration-300 transform -translate-y-10 scale-75 top-2  -z-10 origin-[0] peer-focus:start-0 
      rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
      peer-placeholder-shown:scale-100 ">Category</label>
   <select defaultValue="default"  {...register("category")} className="bg-gray-50 border 
@@ -64,7 +92,7 @@ const AddItems = () => {
  </div>
     <div className="relative z-0 w-full mb-5 group">
     <label  className="font-bold absolute text-2xl font-mono  text-black-500 dark:text-gray-400
-     duration-300 transform -translate-y-10 scale-75 -top-0 -z-10 origin-[0] peer-focus:start-0 
+     duration-300 transform -translate-y-9 scale-75 top-2 -z-10 origin-[0] peer-focus:start-0 
      rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
      peer-placeholder-shown:scale-100 
       ">Price</label>
