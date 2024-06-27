@@ -2,13 +2,26 @@
 import { FaUtensils } from "react-icons/fa";
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import { useForm } from "react-hook-form";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
-
+const imagebb_hosting_key=import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const imagebb_hosting_api=`https://api.imgbb.com/1/upload?key=${imagebb_hosting_key}`;
 const AddItems = () => {
     const { register, handleSubmit } = useForm()
-    const onSubmit = (data) =>{ 
+    const axiosPublic=useAxiosPublic();
+    const onSubmit = async(data) =>{ 
         
-        console.log(data)};
+        console.log(data)
+        // image upload to imagebb and then get an url
+        const imageFile={image:data.image[0]}
+        const res =await axiosPublic.post(imagebb_hosting_api,imageFile,{
+          headers: { 
+            'Content-Type': 'multipart/form-data' 
+          }
+          
+        });
+        console.log(res.data); 
+      };
     return (
         <div>
           <SectionTitle heading="ADD AN ITEMS" subHeading="Whats NEW"></SectionTitle>
@@ -36,7 +49,12 @@ const AddItems = () => {
      duration-300 transform -translate-y-10 scale-75 -top-0 -z-10 origin-[0] peer-focus:start-0 
      rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 
      peer-placeholder-shown:scale-100 ">Category</label>
-  <select id="countries"  {...register("category")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+  <select defaultValue="default"  {...register("category")} className="bg-gray-50 border 
+  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 
+  focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+   dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+    dark:focus:border-blue-500">
+  <option defaultValue="select a category">Select a category</option>
   <option value="salad">Salad</option>
   <option value="pizza">Pizza</option>
   <option value="soup">Soup</option>
