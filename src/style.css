@@ -1,0 +1,27 @@
+.payment-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .card-element-container {
+    width: 100%;
+    max-width: 500px; /* Adjust the width as needed */
+    margin-bottom: 20px; /* Adjust the gap as needed */
+  }
+  
+  .pay-button {
+    text-align: center;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #6a1b9a;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .pay-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
