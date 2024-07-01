@@ -76,6 +76,20 @@ else{
   if(paymentIntent.status === 'succeeded'){
     console.log('transaction id',paymentIntent.id);
     setTransactionId(paymentIntent.id);
+    // now save the payment in the database
+    const payment={
+      email:user.email,
+      price:totalPrice,
+      transactionId:paymentIntent.id,
+      date:new Date(),//utc date convert.use moment js to server
+     cartIds: cart.map(item=> item.id),
+      menueIds:cart.map(item=>item.menueId),
+      status:'panding',
+    
+
+    }
+    const res = await axiosSecure.post('/payments',payment);
+    console.log('payment save',res).data;
   }
 }
     
@@ -105,7 +119,7 @@ else{
             },
           }}
         />
-        <button className="text-orange-500 btn btn-success my-4" type="submit"
+        <button className="text-orange-500 btn btn-success my-4 text-center"  type="submit"
          disabled={!stripe ||!clientSecret}>
           Pay
         </button>
