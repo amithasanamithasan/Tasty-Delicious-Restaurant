@@ -60,6 +60,7 @@ useEffect(()=>{
         .then(res=>{
             if(res.data.token){
                 localStorage.setItem('access-token',res.data.token);
+                setLoading(false);
             }
             
         })
@@ -69,8 +70,9 @@ useEffect(()=>{
         // TODO: remove token (if token stored in the clientside:
         // local storage ,caching in memory)
 localStorage.removeItem('access-token');
+setLoading(false);
     }
-    setLoading(false);
+  
 })
 return () =>{
 return unsubcribe ();
