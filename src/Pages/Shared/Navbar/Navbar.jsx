@@ -9,9 +9,21 @@ import useAdmin from "../../../Hooks/useAdmin";
 
 
 const Navbar = () => {
+// const[success,setSuccess]=useState();
   const{user,logOut }=useContext(AuthContext)
   const [isAdmin]=useAdmin();
-  const[cart]=useCart()
+  
+  const[cart]=useCart();
+
+  // useEffect(() => {
+  //   if (user && isAdmin) {
+  //     setSuccess("Admin logged in admin");
+  //   } else {
+  //     setSuccess("");
+  //   }
+  // }, [user, isAdmin]);
+
+
   const handelLogout=()=>{
     logOut()
     .then(()=>{})
@@ -30,7 +42,9 @@ const Navbar = () => {
 
 
     {
-      user && isAdmin && <li><Link to="/dashboard/adminHome">DASHBOARD</Link></li> 
+      user && isAdmin && <li><Link to="/dashboard/adminHome">DASHBOARD
+      </Link></li> 
+      
     }
     {
 
@@ -90,9 +104,10 @@ const Navbar = () => {
    
    <div className="navbar-end">
    <button className="btn btn-outline btn-warning">Appoinment</button>
+
    </div>
  </div>
- 
+ {/* {success && <div className="alert alert-success">{success}</div>} */}
  
  
        </div>
