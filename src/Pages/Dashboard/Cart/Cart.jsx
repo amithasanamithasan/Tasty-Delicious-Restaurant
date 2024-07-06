@@ -20,22 +20,24 @@ const Cart = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-             axiosSecure.delete(`/carts/${id}`)
-             .then(res=>{
-                if(res.data.dletetedCount>0){
-                refetch();
-                Swal.fire({
-                         title: "Deleted!",
-                         text: "Your file has been deleted.",
-                         icon: "success"
-                         
-                       });
-                       
-                }
-             })
+              axiosSecure
+                .delete(`/carts/${id}`)
+                .then((res) => {
+                  if (res?.data?.deletedCount > 0) {
+                    refetch();
+                    Swal.fire({
+                      title: 'Deleted!',
+                      text: 'Your file has been deleted.',
+                      icon: 'success',
+                    });
+                  }
+                })
+                .catch((error) => {
+                  console.error('Error deleting cart item:', error);
+                });
             }
           });
-    }
+        };
     return (
         <div className="p-4">
         <div className="">
@@ -61,9 +63,9 @@ const Cart = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {cart.map((item,index) => (
+                    {cart.map((item,index ) => (
                         
-                        <tr key={item._id} className="text-center">
+                        <tr key={item._id}  className="text-center">
                             <th className="text-yellow-600">{index +1}</th>
                             <td className="px-4 py-2 border-b">
                                 <img src={item.image} alt={item.name} className="w-16 h-16 object-cover mx-auto" />

@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import SocialLogin from '../../Components/SocialLOgin/SocialLogin';
 
 const Login = () => {
-  const [disabled ,setDisable]=useState(true);
+  const [setDisable]=useState(true);
 const {singIn} =useContext(AuthContext);
 const navigate=useNavigate();
 const location =useLocation();
@@ -96,7 +96,7 @@ console.log('state in the location login page ',location.state)
                 <label className="label">
                 <LoadCanvasTemplate />
                 </label>
-                <input  onBlur={handalevalidate} type="text" name="chaptha"  className="input input-bordered" placeholder="Enter type text avobe"required />
+                <input  onBlur={handalevalidate} type="text" name="chaptha"  className="input input-bordered" placeholder="Enter type text avobe" />
                 
               </div>
               <div className="form-control mt-6">

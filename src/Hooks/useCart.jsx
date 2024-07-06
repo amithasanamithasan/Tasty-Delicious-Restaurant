@@ -11,7 +11,7 @@ const axiosSecure=useAxiosSecure();
 // tr jonno useAuth hook dea kaj kora lagbe
 const { user }= useAuth();
 //    tanstack query
-const { refetch,data: cart=[] }= useQuery({
+const { data: cart=[] ,refetch }= useQuery({
 queryKey:['cart', user?.email],
 queryFn: async ()=>{
     const res= await axiosSecure.get(`/carts?email=${user.email}`);

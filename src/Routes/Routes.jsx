@@ -20,6 +20,7 @@ import Payment from "../Pages/Dashboard/Payment/Payment";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import Reservation from "../Pages/Dashboard/Reservation/Reservation";
 
 
 
@@ -67,6 +68,10 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
         {
           path:'userHome',
           element:<UserHome></UserHome>
+        },
+        {
+            path:'reservation',
+            element:<Reservation></Reservation>
         },
         {
           path:'payment',
