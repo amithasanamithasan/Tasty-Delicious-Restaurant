@@ -6,19 +6,22 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
 const axiosSecure= useAxiosSecure();
-    const { data: users =[], refetch} = useQuery({
+    const { data: users = [] , refetch} = useQuery({
         queryKey: ['users'],
         queryFn: async () =>{
        const res= await axiosSecure.get('/users');
         return res.data;
 }
-      })
+      });
+     
+    
 
       const handeldelMakeAdmin=user=>{
-        axiosSecure.patch(`/users/admin/${user._id}`)
+        axiosSecure
+        .patch(`/users/admin/${user._id}`)
         .then(res=>{
             console.log(res.data)
-            if(res.data.modifiedCount > 0){
+            if(res?.data?.modifiedCount > 0 ){
                 refetch();
                 Swal.fire({
                     position: "top-end",
@@ -97,7 +100,7 @@ className="bg-orange-500
         </td>
 
         <td>
-            {/* */}
+   
         <button  
         onClick={()=>handeldeleteduser(user)} 
         className="bg-red-500 text-white p-2 rounded">

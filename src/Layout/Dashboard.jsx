@@ -102,14 +102,13 @@ ontact</NavLink>
 
 </li>
 
-                </ul>
-
-            </div>
+</ul>
+ </div>
         
-            {/* dashboard content */}
-            <div className="felx-1 p-8">
-                <Outlet></Outlet>
-            </div>
+{/* dashboard content */}
+ <div className="felx-1 p-8">
+<Outlet></Outlet>
+    </div>
         </div>
     );
 };

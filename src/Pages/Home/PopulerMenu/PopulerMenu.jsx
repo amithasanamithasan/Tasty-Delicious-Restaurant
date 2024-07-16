@@ -2,6 +2,7 @@
 import SectionTitle from "../../../Components/SectionTitle/SectionTitle";
 import Menuitem from "../../Shared/MenuItem/Menuitem";
 import useMenu from "../../../Hooks/useMenu";
+import { Link } from "react-router-dom";
 
 
 const PopulerMenu = () => {
@@ -25,7 +26,7 @@ const popular =menu.filter(item=>item.category==='popular')
               
             </div>
             <div className="flex justify-center mt-4">
-                <button className="btn btn-outline border-0 border-b-4">View All Menu</button>
+              <Link to="/ourmenu">  <button className="btn btn-outline border-0 border-b-4">View All Menu</button></Link>
             </div>
       </section>
     );

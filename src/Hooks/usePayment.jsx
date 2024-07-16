@@ -1,0 +1,24 @@
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "./useAuth";
+import useAxiosSecure from "./useAxiosSecure";
+
+
+const usePayment = () => {
+    const axiosSecure=useAxiosSecure();
+// jie user login kora ace shudu tder add fodd cart items gula dekhhabe
+// tr jonno useAuth hook dea kaj kora lagbe
+const { user }= useAuth();
+//    tanstack query
+const { data: payments=[] ,refetch }= useQuery({
+queryKey:['payments', user?.email],
+queryFn: async ()=>{
+    const res= await axiosSecure.get(`/payments?email=${user.transactionId === user.email}`);
+    return res.data
+}
+})
+return [payments, refetch]
+
+};
+
+
+export default usePayment;

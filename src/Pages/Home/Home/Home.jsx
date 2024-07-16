@@ -9,15 +9,15 @@ import Testimonials from "../Testimonial/Testimonials";
 const Home = () => {
     return (
         <div>
-              <Helmet>
-                <title>Testy_deliciouse|HOME</title>
-            </Helmet>
-           <Banner></Banner>
-           <Category></Category>
-           <Category2></Category2>
-           <PopulerMenu></PopulerMenu>
-           <Fetaured></Fetaured>
-          <Testimonials></Testimonials>
+            <Helmet>
+            <title>Testy_deliciouse|HOME</title>
+        </Helmet>
+        <Banner></Banner>
+        <Category></Category>
+        <Category2></Category2>
+        <PopulerMenu></PopulerMenu>
+        <Fetaured></Fetaured>
+        <Testimonials></Testimonials>
         </div>
     );
 };

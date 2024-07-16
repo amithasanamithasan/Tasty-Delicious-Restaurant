@@ -101,15 +101,15 @@ const UserHome = () => {
                   </ul> */}
               </div>
               <div>
-                 <h5 className="text-lg mb-2">Payments</h5>
+                 {/* <h5 className="text-lg mb-2">Payments</h5>
                   {/* Map through the payment list */}
-                  <ul>
+                  {/* <ul>
   {payments.map(payment => (
     <li key={payment.id} className="mb-2">
       {payment.email}
     </li>
   ))}
-</ul>
+</ul>  */}
               </div>
           </div>
           <div className="w-2/3 p-4 bg-green-400 rounded shadow-lg mr-4">
@@ -117,7 +117,7 @@ const UserHome = () => {
               <ul>
                   <li className="mb-2 flex  text-2xl "> <FaCartArrowDown className="p-0 m-1" /><strong >Orders:</strong> {cart.length}</li>
                   <li className="mb-2 flex  text-2xl"> <FaRegStar className="p-0 m-1"  /><strong>Reviews:</strong> 2</li>
-                  <li className="mb-2 flex  text-2xl"><TbBrandBooking  className="p-0 m-1"  /><strong>Bookings:</strong> 1</li>
+                  <li className="mb-2 flex  text-2xl"><TbBrandBooking  className="p-0 m-1"  /><strong>Bookings: </strong> 1</li>
                   <li className="mb-2 flex  text-2xl">  <BsFillCreditCard2BackFill className="p-0 m-1"  /> <strong>Payments: </strong>{payments.length}</li>
               </ul>
           </div>

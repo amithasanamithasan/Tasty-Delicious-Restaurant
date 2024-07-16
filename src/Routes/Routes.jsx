@@ -21,6 +21,7 @@ import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import Reservation from "../Pages/Dashboard/Reservation/Reservation";
+import Contauctus from "../Pages/Shared/ContactUs/Contauctus";
 
 
 
@@ -38,10 +39,15 @@ import Reservation from "../Pages/Dashboard/Reservation/Reservation";
           path:'/ourmenu',
           element:<OurMenu></OurMenu>,
         },
+      
         {
           path:'order/:category',
           element:<Order></Order>,
         },
+        {
+          path:'contact',
+          element:<Contauctus></Contauctus>,
+         },
         {
           path:'login',
           element:<Login></Login>
@@ -70,9 +76,14 @@ import Reservation from "../Pages/Dashboard/Reservation/Reservation";
           element:<UserHome></UserHome>
         },
         {
+          path:'contact',
+          element:<Contauctus></Contauctus>,
+         },
+        {
             path:'reservation',
             element:<Reservation></Reservation>
         },
+       
         {
           path:'payment',
           element:<Payment></Payment>,
