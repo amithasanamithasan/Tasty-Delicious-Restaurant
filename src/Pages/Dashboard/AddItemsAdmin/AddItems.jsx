@@ -50,13 +50,13 @@ const AddItems = () => {
         console.log('with image url',res.data); 
       };
     return (
-        <div>
+        <div className=" max-w-md mx-auto ">
           <SectionTitle   heading="ADD AN ITEMS" subHeading="Whats NEW"></SectionTitle>
          
          <div>
             
 
-<form  onSubmit={handleSubmit(onSubmit)}  className="max-w-md mx-auto">
+<form  onSubmit={handleSubmit(onSubmit)}  className=" max-w-md mx-auto">
   
   <div className="relative z-0 w-full mb-10 group">
   <label  className="  text-1xl font-mono text-black-500 dark:text-blue-400 duration-300

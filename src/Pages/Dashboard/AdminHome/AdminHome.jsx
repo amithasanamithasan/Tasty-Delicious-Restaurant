@@ -84,7 +84,7 @@ const piechartData= chartdata.map(data =>{
         <div>
           
          
-            <div className="stats shadow  py-5 ">
+            <div className="stats shadow    ">
                 <div className="stat bg-violet-500">
                     <div className="stat-figure text-amber-900 bg-amber-500 rounded-lg">
                     <TbMoneybag className="text-5xl" />

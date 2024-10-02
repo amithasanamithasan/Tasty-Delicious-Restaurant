@@ -102,7 +102,7 @@ else{
 
     }
     const res = await axiosSecure.post('/payments',payment);
-    console.log('payment save',res.data);
+
     refetch();
     if(res.data?.paymentResult?.insertedId){
       Swal.fire({
@@ -116,8 +116,7 @@ else{
     }
 
    
-  
-    // if (res.data?.paymentResult?.insertedId){
+ 
     
     
     

@@ -27,7 +27,6 @@ console.log('state in the location login page ',location.state)
         singIn(email,password)
         .then(result=>{
         const user =result.user;
-        console.log(user)
         Swal.fire({
           title: "User login successfully",
           showClass: {
@@ -107,7 +106,7 @@ console.log('state in the location login page ',location.state)
               <div className="divider divider-accent">OR</div>
            <SocialLogin></SocialLogin>
             </form>
-            <p className='text-center text-2xl font-bold font-serif text-sky-600'><small>New here? <Link to="/singup" className='underline'>Create an account</Link></small></p>
+            <p className='text-center text-0  md:text-2xl font-bold font-serif text-sky-600'><small>New here? <Link to="/singup" className='underline text-0 md:text-2xl'>Create an account</Link></small></p>
           </div>
         </div>
       </div>

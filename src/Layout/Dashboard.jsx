@@ -5,7 +5,9 @@ import useCart from "../Hooks/useCart";
 import useAdmin from "../Hooks/useAdmin";
 
 
+
 const Dashboard = () => {
+
     const [cart]=useCart();
     // TODO: get  isAdmin Value from the database 
     const [isAdmin]=useAdmin();
@@ -42,7 +44,7 @@ const Dashboard = () => {
                    <li>
                     <NavLink to ="/dashboard/mybookings">                  
                    <FaBook className="text-2xl"></FaBook>
-                  My Bookings</NavLink>
+                  My Bookings </NavLink>
                    </li>
                         </>
                         :
@@ -56,7 +58,7 @@ const Dashboard = () => {
                  <li>
                     <NavLink to ="/dashboard/reservation">                  
                    <FaCalendar className="text-2xl"></FaCalendar>
-                   Reservation</NavLink>
+                   Reservation </NavLink>
                    </li>
                  <li>
                     <NavLink to ="/dashboard/cart">                  

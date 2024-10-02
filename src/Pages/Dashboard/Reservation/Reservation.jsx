@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 
@@ -21,9 +22,25 @@ const handleReservation=async (event)=>{
 
       try {
         const res = await axiosPublic.post('/reservation', reserve);
-        console.log(res);
+        if(res.data){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Booking Successfully Add",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      
       } catch (error) {
         console.error('Error making reservation:', error);
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Reservation failed",
+          text: "Please try again later.",
+          showConfirmButton: true
+      });
       }
 
 }
@@ -78,11 +95,11 @@ const handleReservation=async (event)=>{
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
             <div>
               <div className="text-gray-700 mb-2">Phone</div>
-              <div className="text-yellow-500 font-semibold">+38 (012) 34 56 789</div>
+              <div className="text-yellow-500 font-semibold">+008 01993790088</div>
             </div>
             <div>
               <div className="text-gray-700 mb-2">Address</div>
-              <div className="text-yellow-500 font-semibold">123 Main Street, Anytown</div>
+              <div className="text-yellow-500 font-semibold">123 Main Street, Anytown Dhaka </div>
             </div>
             <div>
               <div className="text-gray-700 mb-2">Working Hours</div>
