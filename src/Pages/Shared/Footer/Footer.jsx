@@ -5,14 +5,15 @@ import logo2 from"../../../assets/logo2.gif"
 const Footer = () => {
     return (
       <div>
-      <footer className="footer mt-16 p-10 bg-emerald-300 text-base-content ">
+      <footer className="footer mt-16 p-10 bg-emerald-300 text-base-content rounded-sm ">
 <aside>
 <img  className=" hover:bg-fuchsia-700 rounded-full   w-[100px]"  data-aos="flip-left"
    data-aos-easing="ease-out-cubic"
    data-aos-duration="2000" src={logo2} alt="" />
 
    
-  <p className='tex-3xl text-fuchsia-700'>TESTY AND DELICIOUS RASTURANT  Ltd.<br/>Providing reliable tech since 2000</p>
+  <p className='text-2xl md:text-3xl text-fuchsia-700'>TESTY AND DELICIOUS RASTURANT  Ltd.<br/>Providing reliable tech since 2000 </p>
+  <p className="text-2xl md:text-3xl text-black">Created at Amit Hasan Faysal</p>
 </aside> 
 <nav>
   <h6 className="footer-title text-1xl text-black"data-aos="fade-right">Services</h6> 

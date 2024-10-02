@@ -7,11 +7,11 @@ import { MdAccountBalanceWallet } from "react-icons/md";
 import useCart from "../../../Hooks/useCart";
 import { TbBrandBooking } from "react-icons/tb";
 import { BsFillCreditCard2BackFill } from "react-icons/bs";
-import useBooking from "../../../Hooks/useBooking";
+
 
 
 const UserHome = () => {
-  const [booking]=useBooking();
+
   const [cart]=useCart();
   const {user} = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -118,8 +118,8 @@ const UserHome = () => {
               <h4 className="text-3xl mb-4">Your Activities</h4>
               <ul>
                   <li className="mb-2 flex  text-2xl "> <FaCartArrowDown className="p-0 m-1" /><strong >Orders:</strong> {cart.length}</li>
-                  <li className="mb-2 flex  text-2xl"> <FaRegStar className="p-0 m-1"  /><strong>Reviews:</strong> 2</li>
-                  <li className="mb-2 flex  text-2xl"><TbBrandBooking  className="p-0 m-1"  /><strong>Bookings: </strong>{booking.length}</li>
+                  <li className="mb-2 flex  text-2xl"> <FaRegStar className="p-0 m-1"  /><strong>Reviews:</strong> 20</li>
+                  <li className="mb-2 flex  text-2xl"><TbBrandBooking  className="p-0 m-1"  /><strong>Bookings: </strong>4</li>
                   <li className="mb-2 flex  text-2xl">  <BsFillCreditCard2BackFill className="p-0 m-1"  /> <strong>Payments: </strong>{payments.length}</li>
               </ul>
           </div>

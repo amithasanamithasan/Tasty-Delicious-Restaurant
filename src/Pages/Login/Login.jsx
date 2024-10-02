@@ -27,6 +27,7 @@ console.log('state in the location login page ',location.state)
         singIn(email,password)
         .then(result=>{
         const user =result.user;
+        console.log(user);
         Swal.fire({
           title: "User login successfully",
           showClass: {
@@ -72,11 +73,11 @@ console.log('state in the location login page ',location.state)
             </Helmet>
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col md:flex-row-reverse">
-          <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl text-center font-bold">Login now!</h1>
+          <div className="text-center md:w-1/2 lg:text-left" data-aos="zoom-in-right">
+            <h1 className="text-5xl text-center font-bold" >Login now!</h1>
             <Lottie animationData={ Signin} loop={true}></Lottie>
           </div>
-          <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+          <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100"data-aos="zoom-out-down">
             <form onSubmit={handelLogin} className="card-body">
               <div className="form-control">
                 <label className="label">

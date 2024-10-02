@@ -26,11 +26,11 @@ const Navbar = () => {
     })
   }
  const navlink = <>
-   <li><Link className=" md:text-2xl" to="/"> Home</Link></li>
+   <li><Link className=" md:text-2xl" to="/"> HOME</Link></li>
 
-  <li><Link className="   md:text-2xl" to="/contact">CONTACT us</Link></li>
+  <li><Link className="   md:text-2xl" to="/contact">CONTACT US</Link></li>
 
-  <li><Link className=" md:text-2xl" to="/ourmenu">Our Menu</Link></li>
+  <li><Link className=" md:text-2xl" to="/ourmenu">OUR MENU</Link></li>
   
 
 
@@ -72,7 +72,7 @@ const Navbar = () => {
         <div className="navbar fixed z-10 bg-opacity-70 bg-black max-w-screen-full mx-auto  ">
    <div className="navbar-start">
      <div className="dropdown">
-       <div tabIndex={0} role="button" className="btn bg-orange-500 lg:hidden">
+       <div tabIndex={0} role="button" className="btn bg-stone-700 lg:hidden">
        
        
  
@@ -96,7 +96,7 @@ const Navbar = () => {
    </div>
    
    <div className="navbar-end">
-   <button className="btn btn-outline btn-warning">Appoinment</button>
+   <button className="btn btn-outline btn-warning md:text-2xl">Appoinment</button>
 
    </div>
  </div>

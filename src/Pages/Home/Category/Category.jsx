@@ -1,5 +1,6 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper,  } from 'swiper/react';
 
+import Marquee from "react-fast-marquee";
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -13,7 +14,6 @@ import cat5 from"../../../assets/home/slide5.jpg"
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 
 
-
 const Category = () => {
     return (
      <section>
@@ -24,8 +24,8 @@ const Category = () => {
 
       </SectionTitle>
          <Swiper
-        slidesPerView={1}
-        spaceBetween={5}
+        slidesPerView={3}
+        spaceBetween={2}
         pagination={{
           clickable: true,
         }}
@@ -50,29 +50,34 @@ const Category = () => {
         modules={[Pagination]}
         className="mySwiper"
       >
-        <SwiperSlide>
+       
+        
+        <Marquee Direction:right speed={70}>
             <img src={cat1} alt="" />
+          
             <h3 className='text-4xl uppercase text-center -mt-12 text-white'>SALAD</h3>
-        </SwiperSlide>
-        <SwiperSlide>
+      
+    
             <img src={cat2} alt="" />
             <h3 className='text-4xl uppercase text-center -mt-12 text-yellow-400'>PIZZAS</h3>
-        </SwiperSlide>
-        <SwiperSlide>
+   
+     
             <img src={cat3} alt="" />
             <h3 className='text-4xl uppercase text-center -mt-12 text-orange-500'>SOUPS</h3>
-        </SwiperSlide>
-        <SwiperSlide>
+      
+    
             <img src={cat4} alt="" />
             <h3 className='text-4xl uppercase text-center -mt-12 text-pink-800'>DESSERTS</h3>
-        </SwiperSlide>
-        <SwiperSlide>
+       
+    
             <img src={cat5} alt="" />
             <h3 className='text-4xl uppercase text-center -mt-12 text-purple-900'>SALAD</h3>
-        </SwiperSlide>
-   
+      
+        </Marquee>
       </Swiper>
+     
      </section>
+   
     );
 };
 
